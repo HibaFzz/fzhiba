@@ -76,6 +76,12 @@ public class User implements Serializable {
 	public void setLastName(String lName) {
 		this.lastName = lName;
 	}
+	public String getFirstName() {
+		return lastName;
+	}
+	public void setFirstName(String lName) {
+		this.lastName = lName;
+	}
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
