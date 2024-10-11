@@ -81,6 +81,13 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/jacoco-report</outputDirectory>
+							<outputFormats>
+								<outputFormat>html</outputFormat>
+								<outputFormat>xml</outputFormat>
+							</outputFormats>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
