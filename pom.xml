@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -11,21 +10,21 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>tn.esprit.spring.services</groupId>
-	<artifactId>timesheet-devops</artifactId>
-	<version>1.0</version>
-	<name>timesheet-devops</name>
-	<description>tp-spring-jsf-crud</description>
+	<groupId>com.example</groupId>
+	<artifactId>sonarqube-integration</artifactId>
+	<version>1.0.0</version>
+	<name>SonarQube Integration with JaCoCo</name>
+	<description>Sample Spring Boot Project with SonarQube and JaCoCo integration</description>
 
 	<properties>
 		<java.version>11</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<junit-jupiter.version>5.9.3</junit-jupiter.version>
-		<sonar.coverage.jacoco.xmlReportPaths>./codeCoverage/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<jacoco.version>0.8.11</jacoco.version>
+		<sonar.exclusions>**/schemas/**,**/config/**</sonar.exclusions>
+		<sonar.coverage.exclusions>**/schemas/**,**/config/**</sonar.coverage.exclusions>
 	</properties>
 
 	<dependencies>
-		<!-- Spring Boot Dependencies -->
+		<!-- Spring Boot Starter dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -34,14 +33,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 
-		<!-- Database -->
+		<!-- Database Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -53,28 +46,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
+
+		<!-- JaCoCo Maven Plugin Dependency -->
 		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>5.5.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>${jacoco.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -86,7 +64,35 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- Surefire Plugin for Running Tests -->
+			<!-- JaCoCo Plugin for Code Coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- SonarQube Maven Plugin -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.1.2184</version>
+			</plugin>
+
+			<!-- Surefire Plugin for running tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -96,56 +102,8 @@
 						<include>**/*Test.java</include>
 						<include>**/*Tests.java</include>
 					</includes>
-					<useModulePath>false</useModulePath> <!-- Helps with JUnit 5 detection issues -->
 				</configuration>
-			</plugin>
-
-			<!-- SonarQube Plugin -->
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.9.1.2184</version>
 			</plugin>
 		</plugins>
 	</build>
-
-	<!-- Profiles Section -->
-	<profiles>
-		<profile>
-			<id>coverage</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<!-- JaCoCo Plugin for Code Coverage in the Coverage Profile -->
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>prepare-agent</id>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>report</id>
-								<goals>
-									<goal>report</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonarsource</id>
-			<url>https://plugins.gradle.org/m2/</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
