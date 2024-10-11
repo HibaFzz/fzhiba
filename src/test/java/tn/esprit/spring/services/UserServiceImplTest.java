@@ -31,7 +31,7 @@ class UserServiceImplTest {
    void setUp() {
       user = new User();
       user.setId(1L);
-      user.setFirstName("Test User");  // Change this to "Test User"
+      user.setLastName("Test User");  // Change this to "Test User"
       // Set other user properties as needed
    }
 
@@ -52,7 +52,7 @@ class UserServiceImplTest {
 
       User result = userService.addUser(user);
       assertNotNull(result);
-      assertEquals("Test User", result.getFirstName());  // This now matches
+      assertEquals("Test User", result.getLastName());  // This now matches
       verify(userRepository, times(1)).save(user);
    }
 
@@ -70,7 +70,7 @@ class UserServiceImplTest {
 
       User result = userService.updateUser(user);
       assertNotNull(result);
-      assertEquals("Test User", result.getFirstName());  // This now matches
+      assertEquals("Test User", result.getLastName());  // This now matches
       verify(userRepository, times(1)).save(user);
    }
 
@@ -104,7 +104,7 @@ class UserServiceImplTest {
 
       User result = userService.retrieveUser("1");
       assertNotNull(result);
-      assertEquals("Test User", result.getFirstName());  // This now matches
+      assertEquals("Test User", result.getLastName());  // This now matches
    }
 
    @Test

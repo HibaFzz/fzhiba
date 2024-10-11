@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="tn.esprit.spring.services.UserServiceImplTest" time="0.158" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="tn.esprit.spring.controllers.UserRestControlTest" time="2.153" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -57,13 +57,141 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAddUserException" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.122"/>
-  <testcase name="testAddUser" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.01"/>
-  <testcase name="testRetrieveAllUsers" classname="tn.esprit.spring.services.UserServiceImplTest" time="0"/>
-  <testcase name="testUpdateUser" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.001"/>
-  <testcase name="testDeleteUser" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.005"/>
-  <testcase name="testRetrieveUserNotFound" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.003"/>
-  <testcase name="testDeleteUserException" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.003"/>
-  <testcase name="testUpdateUserException" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.002"/>
-  <testcase name="testRetrieveUser" classname="tn.esprit.spring.services.UserServiceImplTest" time="0.002"/>
+  <testcase name="testAddUser" classname="tn.esprit.spring.controllers.UserRestControlTest" time="2.016">
+    <system-out><![CDATA[04:18:55.196 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	t.e.s.c.UserRestControl:
+	{GET [/user/retrieve-all-users]}: retrieveAllUsers()
+	{GET [/user/retrieve-user/{user-id}]}: retrieveUser(String)
+	{PUT [/user/modify-user]}: updateUser(User)
+	{POST [/user/add-user]}: addUser(User)
+	{DELETE [/user/remove-user/{user-id}]}: removeUser(String)
+04:18:55.203 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 5 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+04:18:55.589 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+04:18:55.642 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+04:18:55.672 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+04:18:55.672 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+04:18:55.675 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+04:18:55.675 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+04:18:55.676 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4b61e97
+04:18:55.676 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@11d1735e
+04:18:55.676 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+04:18:55.680 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 8 ms
+04:18:55.732 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - POST "/user/add-user", parameters={}
+04:18:55.737 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to tn.esprit.spring.control.UserRestControl#addUser(User)
+04:18:55.863 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [User [id=null, firstName=null, lastName=Doe, dateNaissance=Mon Jan 01 01:00:00 CET 2024, role=INGENI (truncated)...]
+04:18:55.904 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+04:18:55.905 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [User [id=null, firstName=null, lastName=Doe, dateNaissance=Fri Oct 11 04:18:55 CET 2024, role=INGENI (truncated)...]
+04:18:55.919 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+04:18:55.964 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath - Evaluating path: $['lastName']
+]]></system-out>
+  </testcase>
+  <testcase name="testRetrieveAllUsers" classname="tn.esprit.spring.controllers.UserRestControlTest" time="0.033">
+    <system-out><![CDATA[04:18:55.986 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	t.e.s.c.UserRestControl:
+	{GET [/user/retrieve-all-users]}: retrieveAllUsers()
+	{GET [/user/retrieve-user/{user-id}]}: retrieveUser(String)
+	{PUT [/user/modify-user]}: updateUser(User)
+	{POST [/user/add-user]}: addUser(User)
+	{DELETE [/user/remove-user/{user-id}]}: removeUser(String)
+04:18:55.988 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 5 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+04:18:55.995 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+04:18:55.999 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+04:18:55.999 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+04:18:55.999 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+04:18:56.000 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+04:18:56.000 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+04:18:56.000 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@62dfe152
+04:18:56.000 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@46a0ef6f
+04:18:56.000 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+04:18:56.000 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+04:18:56.001 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - GET "/user/retrieve-all-users", parameters={}
+04:18:56.001 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to tn.esprit.spring.control.UserRestControl#retrieveAllUsers()
+04:18:56.005 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+04:18:56.006 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [[User [id=1, firstName=null, lastName=Doe, dateNaissance=Fri Oct 11 04:18:56 CET 2024, role=INGENIEU (truncated)...]
+04:18:56.010 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+04:18:56.011 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath - Evaluating path: $[0]['lastName']
+04:18:56.011 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath - Evaluating path: $[1]['lastName']
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateUser" classname="tn.esprit.spring.controllers.UserRestControlTest" time="0.024">
+    <system-out><![CDATA[04:18:56.020 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	t.e.s.c.UserRestControl:
+	{GET [/user/retrieve-all-users]}: retrieveAllUsers()
+	{GET [/user/retrieve-user/{user-id}]}: retrieveUser(String)
+	{PUT [/user/modify-user]}: updateUser(User)
+	{POST [/user/add-user]}: addUser(User)
+	{DELETE [/user/remove-user/{user-id}]}: removeUser(String)
+04:18:56.021 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 5 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+04:18:56.025 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+04:18:56.026 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+04:18:56.027 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+04:18:56.027 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+04:18:56.027 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+04:18:56.027 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+04:18:56.027 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@42d7e8bc
+04:18:56.027 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@7b6854b5
+04:18:56.027 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+04:18:56.027 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+04:18:56.028 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PUT "/user/modify-user", parameters={}
+04:18:56.028 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to tn.esprit.spring.control.UserRestControl#updateUser(User)
+04:18:56.033 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [User [id=1, firstName=null, lastName=Doe, dateNaissance=Mon Jan 01 01:00:00 CET 2024, role=INGENIEUR (truncated)...]
+04:18:56.034 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+04:18:56.034 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [User [id=1, firstName=null, lastName=Doe, dateNaissance=Fri Oct 11 04:18:56 CET 2024, role=INGENIEUR (truncated)...]
+04:18:56.036 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+04:18:56.036 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath - Evaluating path: $['lastName']
+]]></system-out>
+  </testcase>
+  <testcase name="testRemoveUser" classname="tn.esprit.spring.controllers.UserRestControlTest" time="0.024">
+    <system-out><![CDATA[04:18:56.042 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	t.e.s.c.UserRestControl:
+	{GET [/user/retrieve-all-users]}: retrieveAllUsers()
+	{GET [/user/retrieve-user/{user-id}]}: retrieveUser(String)
+	{PUT [/user/modify-user]}: updateUser(User)
+	{POST [/user/add-user]}: addUser(User)
+	{DELETE [/user/remove-user/{user-id}]}: removeUser(String)
+04:18:56.045 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 5 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+04:18:56.048 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+04:18:56.051 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+04:18:56.051 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+04:18:56.051 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+04:18:56.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+04:18:56.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+04:18:56.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@261609a7
+04:18:56.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@39296cef
+04:18:56.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+04:18:56.051 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+04:18:56.054 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - DELETE "/user/remove-user/1", parameters={}
+04:18:56.055 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to tn.esprit.spring.control.UserRestControl#removeUser(String)
+04:18:56.061 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+04:18:56.061 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Nothing to write: null body
+04:18:56.061 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+]]></system-out>
+  </testcase>
+  <testcase name="testRetrieveUser" classname="tn.esprit.spring.controllers.UserRestControlTest" time="0.015">
+    <system-out><![CDATA[04:18:56.065 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	t.e.s.c.UserRestControl:
+	{GET [/user/retrieve-all-users]}: retrieveAllUsers()
+	{GET [/user/retrieve-user/{user-id}]}: retrieveUser(String)
+	{PUT [/user/modify-user]}: updateUser(User)
+	{POST [/user/add-user]}: addUser(User)
+	{DELETE [/user/remove-user/{user-id}]}: removeUser(String)
+04:18:56.066 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 5 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+04:18:56.071 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+04:18:56.072 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+04:18:56.072 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+04:18:56.072 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+04:18:56.072 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+04:18:56.072 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+04:18:56.072 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@518a7b8a
+04:18:56.072 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5a24390b
+04:18:56.072 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+04:18:56.072 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+04:18:56.073 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - GET "/user/retrieve-user/1", parameters={}
+04:18:56.074 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to tn.esprit.spring.control.UserRestControl#retrieveUser(String)
+04:18:56.075 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+04:18:56.075 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [User [id=1, firstName=null, lastName=Doe, dateNaissance=Fri Oct 11 04:18:56 CET 2024, role=INGENIEUR (truncated)...]
+04:18:56.077 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+04:18:56.077 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath - Evaluating path: $['lastName']
+]]></system-out>
+  </testcase>
 </testsuite>
